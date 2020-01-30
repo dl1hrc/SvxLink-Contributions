@@ -1,0 +1,23 @@
+
+LOGFILE=/home/svxlink/procmail.log
+VERBOSE=ON
+
+# Warnungen von warnings@dxmaps.com
+:0:dxmaps.lock
+* ^From.*warnings@dxmaps.com
+/var/spool/svxlink/propagation_monitor/vhfdx/
+
+# KATWARN
+:0:katwarn.lock
+* ^From.*versand@katwarn.de
+|/usr/share/svxlink/make_KatWarn.pl
+
+# eMails vom DWD über eine "Umleit"-Adresse
+:0:dwd.lock
+* ^From.*umleitungsadresse-fuer-DWD@gmx.de
+|/usr/share/svxlink/make_DWD.pl
+
+# eMail-Adresse, welche Ansagen auf dem Relais erzeugen darf
+:0:
+* ^From.*berechtigte-eMail-Adresse@gmx.de
+|/usr/share/svxlink/make_announcement.pl
