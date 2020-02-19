@@ -122,7 +122,7 @@ proc check_for_alerts {} {
   set alert 0
 
   # move the *.info files
-  foreach msg_file [glob -nocomplain -directory "$CFG_SPOOL_DIR/" $CFG_CALL.*.wav ] {
+  foreach msg_file [glob -nocomplain -directory "$CFG_SPOOL_DIR/" $CFG_CALL.*.info ] {
     set target "$CFG_SPOOL_DIR/[file tail $msg_file]"
     set wavfile [string trimright [file tail $msg_file] ".wav"]
 
@@ -132,6 +132,7 @@ proc check_for_alerts {} {
     }
 
     playMsg $wavfile
+    file rename -force "$msg_file" "$target"
     set playing 1
   }
 
@@ -139,7 +140,7 @@ proc check_for_alerts {} {
   if { $playing == 0 } {
     foreach msg_file [glob -nocomplain -directory "$CFG_SPOOL_DIR/" $CFG_CALL.*.wav ] {
       set target "$CFG_SPOOL_DIR/archive/[file tail $msg_file]"
-      file rename "$msg_file" "$target"
+      file rename -force "$msg_file" "$target"
     }
   }
 }

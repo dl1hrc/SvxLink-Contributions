@@ -149,7 +149,7 @@ proc check_for_alerts {} {
     }
 
     playMsg KatWarn $wavfile
-    file rename "$msg_file" "$target"
+    file rename -force "$msg_file" "$target"
     set playing 1
   }
 
@@ -157,7 +157,7 @@ proc check_for_alerts {} {
   if { $playing == 0 } {
     foreach msg_file [glob -nocomplain -directory "$CFG_SPOOL_DIR/" $CFG_CALL.*.wav ] {
       set target "$CFG_SPOOL_DIR/archive/[file tail $msg_file]"
-      file rename "$msg_file" "$target"
+      file rename -force "$msg_file" "$target"
     }
     set alert 0
   }
