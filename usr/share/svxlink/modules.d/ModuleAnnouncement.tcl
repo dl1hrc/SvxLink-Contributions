@@ -140,7 +140,7 @@ proc check_for_alerts {} {
   # move the *.info files
   foreach msg_file [glob -nocomplain -directory "$CFG_SPOOL_DIR/" $CFG_CALL.*.info ] {
     set target "$CFG_SPOOL_DIR/[file tail $msg_file]"
-    set wavfile [string trimright [file tail $msg_file] ".wav"]
+    set wavfile [string trimright [file tail $msg_file] ".info"]
 
     if {$CFG_ALERT == 1 && $alert == 0} {
       playAlertSound
