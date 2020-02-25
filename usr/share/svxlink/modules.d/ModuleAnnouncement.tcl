@@ -25,6 +25,19 @@ if {![info exists CFG_ID]} {
 #
 set module_name [namespace tail [namespace current]];
 
+#
+# An "overloaded" playMsg that eliminates the need to write the module name
+# as the first argument.
+#
+#   msg - The message to play
+#
+proc playMsg {msg} {
+  variable module_name
+  printInfo "Module name: $module_name $msg"
+  ::playMsg $module_name $msg
+}
+
+
 
 #
 # A convenience function for printing out information prefixed by the
@@ -147,7 +160,7 @@ proc check_for_alerts {} {
       set alert 1
     }
 
-    playMsg Announcement $wavfile
+    playMsg $wavfile
     file rename -force "$msg_file" "$target"
     set playing 1
   }
