@@ -147,7 +147,7 @@ proc check_for_alerts {} {
       set alert 1
     }
 
-    playMsg $wavfile
+    playMsg Announcement $wavfile
     file rename -force "$msg_file" "$target"
     set playing 1
   }
