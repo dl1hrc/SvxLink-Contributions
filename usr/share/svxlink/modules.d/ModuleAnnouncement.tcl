@@ -113,6 +113,22 @@ proc allMsgsWritten {} {
 }
 
 
+#
+# Play an alert sound to get the users attention
+#
+proc playAlertSound {} {
+  for {set i 0} {$i < 3} {set i [expr $i + 1]} {
+    playTone 440 500 100
+    playTone 880 500 100
+    playTone 440 500 100
+    playTone 880 500 100
+    playSilence 600
+  }
+  playSilence 1000
+  set alert 1
+}
+
+
 # check for Announcements alerts every minute
 proc check_for_alerts {} {
   variable CFG_SPOOL_DIR
