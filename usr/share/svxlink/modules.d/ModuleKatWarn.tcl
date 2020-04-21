@@ -41,6 +41,23 @@ proc playMsg {msg} {
 }
 
 
+#
+# Executed when this module is being activated
+#
+proc activating_module {} {
+  variable module_name
+  Module::activating_module $module_name
+}
+
+
+#
+# Executed when this module is being deactivated.
+#
+proc deactivating_module {} {
+  variable module_name;
+  Module::deactivating_module $module_name;
+}
+
 
 #
 # A convenience function for printing out information prefixed by the
@@ -175,6 +192,16 @@ proc check_for_alerts {} {
     set alert 0
   }
 }
+
+
+#
+# Executed when the inactivity timeout for this module has expired.
+#
+proc timeout {} {
+  variable module_name;
+  Module::timeout $module_name;
+}
+
 
 
 # create archive directory if not exists

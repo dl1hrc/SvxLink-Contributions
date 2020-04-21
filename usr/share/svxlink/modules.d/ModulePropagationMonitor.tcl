@@ -48,6 +48,24 @@ proc processEvent {ev} {
 #
 # Executed when this module is being activated
 #
+proc activating_module {} {
+  variable module_name
+  Module::activating_module $module_name
+}
+
+
+#
+# Executed when this module is being deactivated.
+#
+proc deactivating_module {} {
+  variable module_name;
+  Module::deactivating_module $module_name;
+}
+
+
+#
+# Executed when this module is being activated
+#
 proc activateInit {} {
   printInfo "Module activated"
 }
