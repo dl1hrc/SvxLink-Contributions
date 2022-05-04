@@ -6,5 +6,7 @@ Additional stuff for SvxLink
                     Original-tcl nicht aus dem richtigen Verzeichnis
                     liest
 
-Required software: libemail-mime
+Required software: 
+libemail-mime
+
 sudo apt install libemail-mime-perl
