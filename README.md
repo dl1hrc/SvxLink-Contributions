@@ -9,4 +9,4 @@ Additional stuff for SvxLink
 Required software: 
 libemail-mime
 
-sudo apt install libemail-mime-perl
+sudo apt install libmime-tools-perl
